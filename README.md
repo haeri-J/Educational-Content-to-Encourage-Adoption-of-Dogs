@@ -7,7 +7,8 @@
 > 2171438 조해리
 > ⚠️ 원본 소스코드는 유실되어 보고서와 시연 영상만 남겨둡니다.
 
-![게임 화면]<img width="288" height="192" alt="image" src="https://github.com/user-attachments/assets/ecb0b7fa-3897-4bfd-8871-d11da4c3850b" />
+[게임 화면]
+<img width="288" height="192" alt="image" src="https://github.com/user-attachments/assets/ecb0b7fa-3897-4bfd-8871-d11da4c3850b" />
 
 
 ## 📎 자료
