@@ -4,7 +4,6 @@
 
 플레이어는 **개들의 과거 아픔을 볼 수 있는 수의사**가 됩니다. 근처 강아지 공장에서 구조된 개들을 진찰해 각자의 아픔을 파악하고, 치료합니다.
 
-> 2171438 조해리
 > ⚠️ 원본 소스코드는 유실되어 보고서와 시연 영상만 남겨둡니다.
 
 <img width="288" height="192" alt="image" src="https://github.com/user-attachments/assets/ecb0b7fa-3897-4bfd-8871-d11da4c3850b" />
