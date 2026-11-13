@@ -1,13 +1,13 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // ¾À °ü¸®¸¦ À§ÇÑ ³×ÀÓ½ºÆäÀÌ½º Ãß°¡
+using UnityEngine.SceneManagement; // ì”¬ ê´€ë¦¬ë¥¼ ìœ„í•œ ë„¤ì„ìŠ¤í˜ì´ìŠ¤ ì¶”ê°€
 
 public class cshSpawnPrefabs : MonoBehaviour
 {
-    public GameObject prefab; // ÇÁ¸®ÆÕÀ» ¿¬°áÇÒ º¯¼ö
-    public GameObject[] spawnPoints; // ½ºÆù Æ÷ÀÎÆ®¸¦ ÀúÀåÇÒ ¹è¿­
-    private List<GameObject> spawnedPrefabs = new List<GameObject>(); // »ı¼ºµÈ ÇÁ¸®ÆÕÀ» ÀúÀåÇÒ ¸®½ºÆ®
+    public GameObject prefab; // í”„ë¦¬íŒ¹ì„ ì—°ê²°í•  ë³€ìˆ˜
+    public GameObject[] spawnPoints; // ìŠ¤í° í¬ì¸íŠ¸ë¥¼ ì €ì¥í•  ë°°ì—´
+    private List<GameObject> spawnedPrefabs = new List<GameObject>(); // ìƒì„±ëœ í”„ë¦¬íŒ¹ì„ ì €ì¥í•  ë¦¬ìŠ¤íŠ¸
 
     void Start()
     {
@@ -20,23 +20,23 @@ public class cshSpawnPrefabs : MonoBehaviour
         {
             GameObject go = Instantiate(prefab, spawnPoint.transform.position, Quaternion.identity);
             spawnedPrefabs.Add(go);
-            yield return new WaitForSeconds(1f); // 1ÃÊ °£°İÀ¸·Î ÇÁ¸®ÆÕ »ı¼º
+            yield return new WaitForSeconds(1f); // 1ì´ˆ ê°„ê²©ìœ¼ë¡œ í”„ë¦¬íŒ¹ ìƒì„±
         }
 
-        yield return new WaitForSeconds(2f); // ¸ğµç ÇÁ¸®ÆÕÀÌ »ı¼ºµÈ ÈÄ 2ÃÊ ´ë±â
+        yield return new WaitForSeconds(2f); // ëª¨ë“  í”„ë¦¬íŒ¹ì´ ìƒì„±ëœ í›„ 2ì´ˆ ëŒ€ê¸°
 
         foreach (GameObject go in spawnedPrefabs)
         {
-            // ÇÁ¸®ÆÕÀÇ zÃàÀÌ Ä«¸Ş¶ó¸¦ ÇâÇÏµµ·Ï È¸Àü
+            // í”„ë¦¬íŒ¹ì˜ zì¶•ì´ ì¹´ë©”ë¼ë¥¼ í–¥í•˜ë„ë¡ íšŒì „
             Vector3 direction = (Camera.main.transform.position - go.transform.position).normalized;
             go.transform.rotation = Quaternion.LookRotation(direction);
 
-            // Ä«¸Ş¶ó ¹æÇâÀ¸·Î ÈûÀ» °¡ÇÔ
+            // ì¹´ë©”ë¼ ë°©í–¥ìœ¼ë¡œ í˜ì„ ê°€í•¨
             go.GetComponent<Rigidbody>().AddForce(direction * 2f, ForceMode.Impulse);
         }
 
-        yield return new WaitForSeconds(3f); // ¸ğµç ÇÁ¸®ÆÕÀÌ ¿òÁ÷ÀÎ ÈÄ 5ÃÊ ´ë±â
+        yield return new WaitForSeconds(3f); // ëª¨ë“  í”„ë¦¬íŒ¹ì´ ì›€ì§ì¸ í›„ 5ì´ˆ ëŒ€ê¸°
 
-        SceneManager.LoadScene("hospital2"); // ´ÙÀ½ ¾ÀÀ¸·Î ÀÌµ¿
+        SceneManager.LoadScene("hospital2"); // ë‹¤ìŒ ì”¬ìœ¼ë¡œ ì´ë™
     }
 }

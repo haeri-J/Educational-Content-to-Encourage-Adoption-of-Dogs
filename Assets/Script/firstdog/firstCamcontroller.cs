@@ -1,16 +1,16 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
 public class firstCamcontroller : MonoBehaviour
 {
-    public string sceneName; // º¯°æÇÏ·Á´Â ¾ÀÀÇ ÀÌ¸§
-    public float delayBeforeMoving = 60f; // ¿òÁ÷ÀÓ Àü ´ë±â ½Ã°£ (ÃÊ)
-    public float moveDuration = 5f; // ¿òÁ÷ÀÓ Áö¼Ó ½Ã°£ (ÃÊ)
-    public Vector3 moveDirection = new Vector3(0, 1, -1); // ¿òÁ÷ÀÏ ¹æÇâ
-    public float moveSpeed = 1f; // ¿òÁ÷ÀÓ ¼Óµµ
-    public Transform target; // ¹Ù¶óº¼ ´ë»ó ¿ÀºêÁ§Æ®
+    public string sceneName; // ë³€ê²½í•˜ë ¤ëŠ” ì”¬ì˜ ì´ë¦„
+    public float delayBeforeMoving = 60f; // ì›€ì§ì„ ì „ ëŒ€ê¸° ì‹œê°„ (ì´ˆ)
+    public float moveDuration = 5f; // ì›€ì§ì„ ì§€ì† ì‹œê°„ (ì´ˆ)
+    public Vector3 moveDirection = new Vector3(0, 1, -1); // ì›€ì§ì¼ ë°©í–¥
+    public float moveSpeed = 1f; // ì›€ì§ì„ ì†ë„
+    public Transform target; // ë°”ë¼ë³¼ ëŒ€ìƒ ì˜¤ë¸Œì íŠ¸
 
     void Start()
     {
@@ -23,16 +23,16 @@ public class firstCamcontroller : MonoBehaviour
 
     IEnumerator MoveCamera()
     {
-        // ¿òÁ÷ÀÓ Àü ´ë±â
+        // ì›€ì§ì„ ì „ ëŒ€ê¸°
         yield return new WaitForSeconds(delayBeforeMoving);
 
-        // ¿òÁ÷ÀÓ ½ÃÀÛ ½Ã°£ ÀúÀå
+        // ì›€ì§ì„ ì‹œì‘ ì‹œê°„ ì €ì¥
         float startTime = Time.time;
 
-        // ¿òÁ÷ÀÓ ½ÃÀÛ À§Ä¡ ÀúÀå
+        // ì›€ì§ì„ ì‹œì‘ ìœ„ì¹˜ ì €ì¥
         Vector3 startPosition = transform.position;
 
-        // ÁöÁ¤µÈ ½Ã°£ µ¿¾È ¿òÁ÷ÀÓ
+        // ì§€ì •ëœ ì‹œê°„ ë™ì•ˆ ì›€ì§ì„
         while (Time.time < startTime + moveDuration)
         {
             float t = (Time.time - startTime) / moveDuration;
@@ -40,7 +40,7 @@ public class firstCamcontroller : MonoBehaviour
             yield return null;
         }
 
-        // ¿òÁ÷ÀÓ ¿Ï·á ÈÄ ¾À º¯°æ
+        // ì›€ì§ì„ ì™„ë£Œ í›„ ì”¬ ë³€ê²½
         SceneManager.LoadScene(sceneName);
     }
 }

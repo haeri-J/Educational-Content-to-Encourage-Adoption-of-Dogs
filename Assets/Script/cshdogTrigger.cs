@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,8 +8,8 @@ public class cshdogTrigger : MonoBehaviour
     {
         if (other.CompareTag("dog")|| other.CompareTag("bowl"))
         {
-            Debug.Log("Ãæµ¹µÊ");
-            Destroy(gameObject); // ½ºÅ©¸³Æ®°¡ ¿¬°áµÈ ÀÚ½ÅÀÇ ¿ÀºêÁ§Æ®¸¦ ÆÄ±«
+            Debug.Log("ì¶©ëŒë¨");
+            Destroy(gameObject); // ìŠ¤í¬ë¦½íŠ¸ê°€ ì—°ê²°ëœ ìì‹ ì˜ ì˜¤ë¸Œì íŠ¸ë¥¼ íŒŒê´´
         }
     }
 }

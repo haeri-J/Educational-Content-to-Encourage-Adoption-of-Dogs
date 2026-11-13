@@ -1,13 +1,13 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
 
 public class firstdogSubtitleController : MonoBehaviour
 {
-    public Text subtitleText; // ÀÚ¸·À» Ç¥½ÃÇÒ Text ÄÄÆ÷³ÍÆ®
-    public string[] subtitles = { }; // Ç¥½ÃÇÒ ÀÚ¸·µé
-    public float delay = 5f; // ÀÚ¸· °£ÀÇ ½Ã°£ °£°İ
+    public Text subtitleText; // ìë§‰ì„ í‘œì‹œí•  Text ì»´í¬ë„ŒíŠ¸
+    public string[] subtitles = { }; // í‘œì‹œí•  ìë§‰ë“¤
+    public float delay = 5f; // ìë§‰ ê°„ì˜ ì‹œê°„ ê°„ê²©
 
     void Start()
     {
@@ -18,8 +18,8 @@ public class firstdogSubtitleController : MonoBehaviour
     {
         foreach (string subtitle in subtitles)
         {
-            subtitleText.text = subtitle; // ÀÚ¸·À» º¯°æÇÕ´Ï´Ù.
-            yield return new WaitForSeconds(delay); // ÁöÁ¤µÈ ½Ã°£ µ¿¾È ´ë±âÇÕ´Ï´Ù.
+            subtitleText.text = subtitle; // ìë§‰ì„ ë³€ê²½í•©ë‹ˆë‹¤.
+            yield return new WaitForSeconds(delay); // ì§€ì •ëœ ì‹œê°„ ë™ì•ˆ ëŒ€ê¸°í•©ë‹ˆë‹¤.
         }
     }
 }

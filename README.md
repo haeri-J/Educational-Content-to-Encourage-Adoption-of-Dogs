@@ -2,6 +2,8 @@
 
 **반려견 입양을 장려하는 3D 교육용 콘텐츠 (Unity)**
 
+> 2024.06 · 개인 프로젝트 · Unity 2022.3.20f1
+
 플레이어는 **개들의 과거 아픔을 볼 수 있는 수의사**가 됩니다. 근처 강아지 공장에서 구조된 개들을 진찰해 각자의 아픔을 파악하고, 치료합니다.
 
 
@@ -57,6 +59,39 @@
 
 ### 버튼
 빈 게임 오브젝트에 씬 로드 스크립트를 붙이고, 버튼의 `onClick`에 그 오브젝트를 연결해 씬을 로드하는 함수를 호출합니다.
+
+## 📁 소스 구조
+
+```
+Assets
+├── Scenes/            # 씬 7개: first, firstdog, hospital, hospital2, second, hospital3, Third
+├── Script/
+│   ├── firstdog/      # 첫 번째 개: 상태, 아이템 상호작용, 카메라 연출, 자막
+│   ├── seconddog/     # 두 번째 개: 상태, 아이템 상호작용, 프리팹 스폰
+│   ├── thirdDog/      # 세 번째 개: 상태, 상호작용, 카메라 이동, 8자 움직임
+│   ├── SceneChanger.cs        # 버튼으로 씬 전환
+│   ├── cshClipboard.cs        # 클립보드(상태·처방전) 집기
+│   └── cshdogTrigger.cs       # 던진 아이템이 개에 닿으면 사라지게 처리
+├── animator/          # 개 애니메이터 (누운 개, 앉은 개, 화난 개)
+├── postprocessing/    # 과거 장면용 Post-processing 프로필
+└── Meterial/          # 직접 만든 머티리얼
+```
+
+## ▶️ 실행 방법
+
+에셋 스토어에서 받은 3D 모델·소품 패키지는 **라이선스상 공개 재배포가 안 돼서 레포에서 뺐습니다.** 그래서 그대로 열면 씬에 모델이 비어 보입니다. 실행하려면 아래 패키지를 Unity Asset Store에서 직접 받아 `Assets`에 임포트하세요.
+
+- 3D Stylized Animated Dogs Kit (Bublisher)
+- Morgue Room PBR
+- Mini Toon Office
+- HorrorHealingPack
+- Survival Tools
+- Household Items (Kabungus)
+- SimpleHands, Clipboard, First aid jar, Dish&Tray, Bitgem
+
+1. Unity Hub에서 **Unity 2022.3.20f1**로 이 폴더를 엽니다.
+2. 위 패키지들을 임포트합니다.
+3. `Assets/Scenes/first`를 열고 ▶︎ Play 합니다.
 
 ## 사용 기술
 - Unity, C#

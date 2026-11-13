@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class cshThirdState : MonoBehaviour
 {
 
-    public bool hasTowel = false; // Å¸¿ù »óÅÂ
-    public bool hasSyringe = false; // ÁÖ»ç±â »óÅÂ
-    public bool hasBandage = false; // ÁÖ»ç±â »óÅÂ
-    public Button interactButton; // »óÈ£ÀÛ¿ë ¹öÆ°
-    private Animator animator; // ¾Ö´Ï¸ŞÀÌÅÍ ÄÄÆ÷³ÍÆ®
+    public bool hasTowel = false; // íƒ€ì›” ìƒíƒœ
+    public bool hasSyringe = false; // ì£¼ì‚¬ê¸° ìƒíƒœ
+    public bool hasBandage = false; // ì£¼ì‚¬ê¸° ìƒíƒœ
+    public Button interactButton; // ìƒí˜¸ì‘ìš© ë²„íŠ¼
+    private Animator animator; // ì• ë‹ˆë©”ì´í„° ì»´í¬ë„ŒíŠ¸
     public Transform dogposition;
 
     // Start is called before the first frame update
@@ -18,11 +18,11 @@ public class cshThirdState : MonoBehaviour
     {
         interactButton.interactable = false;
 
-        // Animator ÄÄÆ÷³ÍÆ® °¡Á®¿À±â
+        // Animator ì»´í¬ë„ŒíŠ¸ ê°€ì ¸ì˜¤ê¸°
         animator = GetComponent<Animator>();
         if (animator == null)
         {
-            Debug.LogError("Animator ÄÄÆ÷³ÍÆ®¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù. °ÔÀÓ ¿ÀºêÁ§Æ®¿¡ Ãß°¡µÇ¾î ÀÖ´ÂÁö È®ÀÎÇÏ¼¼¿ä.");
+            Debug.LogError("Animator ì»´í¬ë„ŒíŠ¸ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ê²Œì„ ì˜¤ë¸Œì íŠ¸ì— ì¶”ê°€ë˜ì–´ ìˆëŠ”ì§€ í™•ì¸í•˜ì„¸ìš”.");
         }
     }
 
@@ -30,20 +30,20 @@ public class cshThirdState : MonoBehaviour
     {
         if (hasSyringe)
         {
-            // °ÔÀÓ ¿ÀºêÁ§Æ® À§Ä¡¸¦ dogpositionÀ¸·Î º¯°æ
+            // ê²Œì„ ì˜¤ë¸Œì íŠ¸ ìœ„ì¹˜ë¥¼ dogpositionìœ¼ë¡œ ë³€ê²½
             transform.position = dogposition.position;
 
-            // °ÔÀÓ ¿ÀºêÁ§Æ®ÀÇ ·ÎÅ×ÀÌ¼ÇÀ» (0, 0, 0)À¸·Î ¼³Á¤
+            // ê²Œì„ ì˜¤ë¸Œì íŠ¸ì˜ ë¡œí…Œì´ì…˜ì„ (0, 0, 0)ìœ¼ë¡œ ì„¤ì •
             transform.rotation = Quaternion.Euler(15, 10, 55);
 
            
-            // ¾Ö´Ï¸ŞÀÌ¼Ç º¯¼ö eatÀ» true·Î ¼³Á¤
+            // ì• ë‹ˆë©”ì´ì…˜ ë³€ìˆ˜ eatì„ trueë¡œ ì„¤ì •
             if (animator != null)
             {
                 animator.SetBool("sleep", true);
             }
 
-            // ¸ğµç Á¶°ÇÀÌ Æ®·çÀÏ ¶§ ¹öÆ° È°¼ºÈ­
+            // ëª¨ë“  ì¡°ê±´ì´ íŠ¸ë£¨ì¼ ë•Œ ë²„íŠ¼ í™œì„±í™”
             if (hasBandage && hasTowel)
             {          
                 interactButton.interactable = true;

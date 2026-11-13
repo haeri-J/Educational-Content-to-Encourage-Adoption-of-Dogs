@@ -1,75 +1,75 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // UI ÄÄÆ÷³ÍÆ®¸¦ »ç¿ëÇÏ±â À§ÇØ Ãß°¡
+using UnityEngine.UI; // UI ì»´í¬ë„ŒíŠ¸ë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•´ ì¶”ê°€
 
 public class cshThirdInterection : MonoBehaviour
 {
-    public Transform playerChildObject; // ÇÃ·¹ÀÌ¾îÀÇ ÀÚ½Ä ¿ÀºêÁ§Æ®
-    private GameObject heldObject; // ÇÃ·¹ÀÌ¾î°¡ µé°í ÀÖ´Â ¿ÀºêÁ§Æ®
-    public GameObject[] spawnPoints; // ½ºÆù Æ÷ÀÎÆ®¸¦ ÀúÀåÇÒ ¹è¿­
-    private Vector3 originalPosition; // ¿ÀºêÁ§Æ®ÀÇ ¿ø·¡ À§Ä¡¸¦ ÀúÀåÇÒ º¯¼ö
-    private bool hasPickedUpSyringe = false; // Syringe¸¦ µé¾ú´ÂÁö ¿©ºÎ¸¦ È®ÀÎÇÏ´Â º¯¼ö
-    public Text warningText; // °æ°í ¸Ş½ÃÁö¸¦ Ç¥½ÃÇÒ ÅØ½ºÆ® ÄÄÆ÷³ÍÆ®
-    public cshThirdState dogState; // °­¾ÆÁö »óÅÂ ½ºÅ©¸³Æ® 
+    public Transform playerChildObject; // í”Œë ˆì´ì–´ì˜ ìì‹ ì˜¤ë¸Œì íŠ¸
+    private GameObject heldObject; // í”Œë ˆì´ì–´ê°€ ë“¤ê³  ìˆëŠ” ì˜¤ë¸Œì íŠ¸
+    public GameObject[] spawnPoints; // ìŠ¤í° í¬ì¸íŠ¸ë¥¼ ì €ì¥í•  ë°°ì—´
+    private Vector3 originalPosition; // ì˜¤ë¸Œì íŠ¸ì˜ ì›ë˜ ìœ„ì¹˜ë¥¼ ì €ì¥í•  ë³€ìˆ˜
+    private bool hasPickedUpSyringe = false; // Syringeë¥¼ ë“¤ì—ˆëŠ”ì§€ ì—¬ë¶€ë¥¼ í™•ì¸í•˜ëŠ” ë³€ìˆ˜
+    public Text warningText; // ê²½ê³  ë©”ì‹œì§€ë¥¼ í‘œì‹œí•  í…ìŠ¤íŠ¸ ì»´í¬ë„ŒíŠ¸
+    public cshThirdState dogState; // ê°•ì•„ì§€ ìƒíƒœ ìŠ¤í¬ë¦½íŠ¸ 
 
    
     void Update()
     {
-        if (heldObject != null) // ¿ÀºêÁ§Æ®¸¦ µé°í ÀÖ°í
+        if (heldObject != null) // ì˜¤ë¸Œì íŠ¸ë¥¼ ë“¤ê³  ìˆê³ 
         {
-            heldObject.transform.position = playerChildObject.position; // ¿ÀºêÁ§Æ®ÀÇ À§Ä¡¸¦ ÇÃ·¹ÀÌ¾îÀÇ ÀÚ½Ä ¿ÀºêÁ§Æ® À§Ä¡·Î ¾÷µ¥ÀÌÆ®
+            heldObject.transform.position = playerChildObject.position; // ì˜¤ë¸Œì íŠ¸ì˜ ìœ„ì¹˜ë¥¼ í”Œë ˆì´ì–´ì˜ ìì‹ ì˜¤ë¸Œì íŠ¸ ìœ„ì¹˜ë¡œ ì—…ë°ì´íŠ¸
         }
 
-        if (Input.GetMouseButtonDown(0)) // ¸¶¿ì½º ¿ŞÂÊ ¹öÆ°À» ´­·¶À» ¶§
+        if (Input.GetMouseButtonDown(0)) // ë§ˆìš°ìŠ¤ ì™¼ìª½ ë²„íŠ¼ì„ ëˆŒë €ì„ ë•Œ
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.CompareTag("syringe") && heldObject == null) // ÅÂ±×°¡ 'syringe'ÀÎ °æ¿ì, ±×¸®°í heldObject°¡ nullÀÎ °æ¿ì
+                if (hit.transform.CompareTag("syringe") && heldObject == null) // íƒœê·¸ê°€ 'syringe'ì¸ ê²½ìš°, ê·¸ë¦¬ê³  heldObjectê°€ nullì¸ ê²½ìš°
                 {
-                    if (heldObject != null) // ÀÌ¹Ì ¿ÀºêÁ§Æ®¸¦ µé°í ÀÖ´Ù¸é
+                    if (heldObject != null) // ì´ë¯¸ ì˜¤ë¸Œì íŠ¸ë¥¼ ë“¤ê³  ìˆë‹¤ë©´
                     {
-                        heldObject.transform.position = originalPosition; // ¿ÀºêÁ§Æ®¸¦ ¿ø·¡ À§Ä¡·Î ÀÌµ¿
+                        heldObject.transform.position = originalPosition; // ì˜¤ë¸Œì íŠ¸ë¥¼ ì›ë˜ ìœ„ì¹˜ë¡œ ì´ë™
                     }
-                    heldObject = hit.transform.gameObject; // »õ·Î¿î ¿ÀºêÁ§Æ®¸¦ µé°Ô ÇÔ
-                    originalPosition = heldObject.transform.position; // ¿ÀºêÁ§Æ®ÀÇ ¿ø·¡ À§Ä¡¸¦ ÀúÀå
-                    hasPickedUpSyringe = true; // Syringe¸¦ µé¾ú´Ù°í Ç¥½Ã
+                    heldObject = hit.transform.gameObject; // ìƒˆë¡œìš´ ì˜¤ë¸Œì íŠ¸ë¥¼ ë“¤ê²Œ í•¨
+                    originalPosition = heldObject.transform.position; // ì˜¤ë¸Œì íŠ¸ì˜ ì›ë˜ ìœ„ì¹˜ë¥¼ ì €ì¥
+                    hasPickedUpSyringe = true; // Syringeë¥¼ ë“¤ì—ˆë‹¤ê³  í‘œì‹œ
                 }
-                else if ((hit.transform.CompareTag("bandage") || hit.transform.CompareTag("towel")) && heldObject == null && hasPickedUpSyringe) // ÅÂ±×°¡ 'bandage'³ª 'towel'ÀÎ °æ¿ì, ±×¸®°í heldObject°¡ nullÀÌ¸ç syringe¸¦ ÀÌ¹Ì µé¾ú´Ù¸é
+                else if ((hit.transform.CompareTag("bandage") || hit.transform.CompareTag("towel")) && heldObject == null && hasPickedUpSyringe) // íƒœê·¸ê°€ 'bandage'ë‚˜ 'towel'ì¸ ê²½ìš°, ê·¸ë¦¬ê³  heldObjectê°€ nullì´ë©° syringeë¥¼ ì´ë¯¸ ë“¤ì—ˆë‹¤ë©´
                 {
-                    if (heldObject != null) // ÀÌ¹Ì ¿ÀºêÁ§Æ®¸¦ µé°í ÀÖ´Ù¸é
+                    if (heldObject != null) // ì´ë¯¸ ì˜¤ë¸Œì íŠ¸ë¥¼ ë“¤ê³  ìˆë‹¤ë©´
                     {
-                        heldObject.transform.position = originalPosition; // ¿ÀºêÁ§Æ®¸¦ ¿ø·¡ À§Ä¡·Î ÀÌµ¿
+                        heldObject.transform.position = originalPosition; // ì˜¤ë¸Œì íŠ¸ë¥¼ ì›ë˜ ìœ„ì¹˜ë¡œ ì´ë™
                     }
-                    heldObject = hit.transform.gameObject; // »õ·Î¿î ¿ÀºêÁ§Æ®¸¦ µé°Ô ÇÔ
-                    originalPosition = heldObject.transform.position; // ¿ÀºêÁ§Æ®ÀÇ ¿ø·¡ À§Ä¡¸¦ ÀúÀå
+                    heldObject = hit.transform.gameObject; // ìƒˆë¡œìš´ ì˜¤ë¸Œì íŠ¸ë¥¼ ë“¤ê²Œ í•¨
+                    originalPosition = heldObject.transform.position; // ì˜¤ë¸Œì íŠ¸ì˜ ì›ë˜ ìœ„ì¹˜ë¥¼ ì €ì¥
                 }
-                else if ((hit.transform.CompareTag("bandage") || hit.transform.CompareTag("towel")) && heldObject == null && !hasPickedUpSyringe) // syringe¸¦ µéÁö ¾Ê¾Ò´Âµ¥ bandage³ª towelÀ» Å¬¸¯ÇÑ °æ¿ì
+                else if ((hit.transform.CompareTag("bandage") || hit.transform.CompareTag("towel")) && heldObject == null && !hasPickedUpSyringe) // syringeë¥¼ ë“¤ì§€ ì•Šì•˜ëŠ”ë° bandageë‚˜ towelì„ í´ë¦­í•œ ê²½ìš°
                 {
-                    StartCoroutine(ShowWarning("¼Õ ¹°¸± °Í °°¾Æ ¸¶ÃëºÎÅÍÇÏÀÚ")); // °æ°í ¸Ş½ÃÁö Ç¥½Ã
+                    StartCoroutine(ShowWarning("ì† ë¬¼ë¦´ ê²ƒ ê°™ì•„ ë§ˆì·¨ë¶€í„°í•˜ì")); // ê²½ê³  ë©”ì‹œì§€ í‘œì‹œ
                 }
-                else if (hit.transform.CompareTag("dog")) // ÅÂ±×°¡ 'dog'ÀÎ °æ¿ì
+                else if (hit.transform.CompareTag("dog")) // íƒœê·¸ê°€ 'dog'ì¸ ê²½ìš°
                 {
-                    if (heldObject != null) // ¿ÀºêÁ§Æ®¸¦ µé°í ÀÖ´Ù¸é
+                    if (heldObject != null) // ì˜¤ë¸Œì íŠ¸ë¥¼ ë“¤ê³  ìˆë‹¤ë©´
                     {
                        
                         if (heldObject.CompareTag("towel"))
                         {
-                            dogState.hasTowel = true; // Å¸¿ù »óÅÂ ¾÷µ¥ÀÌÆ®
+                            dogState.hasTowel = true; // íƒ€ì›” ìƒíƒœ ì—…ë°ì´íŠ¸
                         }
                         else if (heldObject.CompareTag("bandage"))
                         {
-                            dogState.hasBandage = true; // ÁÖ»ç±â »óÅÂ ¾÷µ¥ÀÌÆ®
+                            dogState.hasBandage = true; // ì£¼ì‚¬ê¸° ìƒíƒœ ì—…ë°ì´íŠ¸
                         }
                         else if (heldObject.CompareTag("syringe"))
                         {
-                            dogState.hasSyringe = true; // ÁÖ»ç±â »óÅÂ ¾÷µ¥ÀÌÆ®
+                            dogState.hasSyringe = true; // ì£¼ì‚¬ê¸° ìƒíƒœ ì—…ë°ì´íŠ¸
                         }
 
                         heldObject.GetComponent<Rigidbody>().AddForce((hit.transform.position - heldObject.transform.position).normalized * 1f, ForceMode.Impulse);
-                        heldObject = null; // heldObject¸¦ null·Î ¼³Á¤
+                        heldObject = null; // heldObjectë¥¼ nullë¡œ ì„¤ì •
                     }
                 }
             }
@@ -78,9 +78,9 @@ public class cshThirdInterection : MonoBehaviour
 
     private IEnumerator ShowWarning(string message)
     {
-        warningText.text = message; // °æ°í ¸Ş½ÃÁö ¼³Á¤
-        warningText.gameObject.SetActive(true); // °æ°í ¸Ş½ÃÁö È°¼ºÈ­
-        yield return new WaitForSeconds(2f); // 2ÃÊ µ¿¾È ¸Ş½ÃÁö Ç¥½Ã
-        warningText.gameObject.SetActive(false); // °æ°í ¸Ş½ÃÁö ºñÈ°¼ºÈ­
+        warningText.text = message; // ê²½ê³  ë©”ì‹œì§€ ì„¤ì •
+        warningText.gameObject.SetActive(true); // ê²½ê³  ë©”ì‹œì§€ í™œì„±í™”
+        yield return new WaitForSeconds(2f); // 2ì´ˆ ë™ì•ˆ ë©”ì‹œì§€ í‘œì‹œ
+        warningText.gameObject.SetActive(false); // ê²½ê³  ë©”ì‹œì§€ ë¹„í™œì„±í™”
     }
 }
