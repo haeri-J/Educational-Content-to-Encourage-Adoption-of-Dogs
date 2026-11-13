@@ -1,13 +1,13 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class cshFigureEightMovement : MonoBehaviour
 {
-    public float speed = 2.0f; // ¿ÀºêÁ§Æ® ÀÌµ¿ ¼Óµµ
-    public float size = 1.0f; // 8ÀÚ ¸ğ¾çÀÇ Å©±â
-    public float delayTime = 6.0f; // Áö¿¬ ½Ã°£
-    public GameObject prefab; // »ı¼ºÇÒ ÇÁ¸®ÆÕ
+    public float speed = 2.0f; // ì˜¤ë¸Œì íŠ¸ ì´ë™ ì†ë„
+    public float size = 1.0f; // 8ì ëª¨ì–‘ì˜ í¬ê¸°
+    public float delayTime = 6.0f; // ì§€ì—° ì‹œê°„
+    public GameObject prefab; // ìƒì„±í•  í”„ë¦¬íŒ¹
 
     private float time;
     private GameObject instantiatedPrefab;
@@ -23,7 +23,7 @@ public class cshFigureEightMovement : MonoBehaviour
         {
             time += Time.deltaTime * speed;
 
-            // °¡·Î·Î ´©¿î 8ÀÚ ÇüÅÂÀÇ °æ·Î¸¦ µû¶ó ÀÌµ¿
+            // ê°€ë¡œë¡œ ëˆ„ìš´ 8ì í˜•íƒœì˜ ê²½ë¡œë¥¼ ë”°ë¼ ì´ë™
             float x = Mathf.Sin(time) * size;
             float y = Mathf.Sin(time * 2) * size / 2;
 
@@ -35,7 +35,7 @@ public class cshFigureEightMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(delayTime);
 
-        // ÇöÀç À§Ä¡¿¡ ÇÁ¸®ÆÕ »ı¼º
+        // í˜„ì¬ ìœ„ì¹˜ì— í”„ë¦¬íŒ¹ ìƒì„±
         instantiatedPrefab = Instantiate(prefab, transform.position, Quaternion.identity);
     }
 }

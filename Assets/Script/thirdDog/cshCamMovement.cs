@@ -1,14 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // ¾À ·ÎµùÀ» À§ÇØ Ãß°¡
+using UnityEngine.SceneManagement; // ì”¬ ë¡œë”©ì„ ìœ„í•´ ì¶”ê°€
 
 public class cshCamMovement : MonoBehaviour
 {
-    public float delayTime = 6.0f; // Áö¿¬ ½Ã°£
-    public float speed = 2.0f; // Ä«¸Ş¶ó ÀÌµ¿ ¼Óµµ
-    public float amplitude = 1.0f; // ÀÌµ¿ ¹üÀ§
-    public string nextSceneName; // ·ÎµåÇÒ ´ÙÀ½ ¾À ÀÌ¸§
+    public float delayTime = 6.0f; // ì§€ì—° ì‹œê°„
+    public float speed = 2.0f; // ì¹´ë©”ë¼ ì´ë™ ì†ë„
+    public float amplitude = 1.0f; // ì´ë™ ë²”ìœ„
+    public string nextSceneName; // ë¡œë“œí•  ë‹¤ìŒ ì”¬ ì´ë¦„
 
     private Vector3 initialPosition;
 
@@ -30,14 +30,14 @@ public class cshCamMovement : MonoBehaviour
             float y = Mathf.Sin(time) * amplitude;
             float z = Mathf.Cos(time) * amplitude;
 
-            // YÃà°ú ZÃà ¹æÇâÀ¸·Î ÀÌµ¿
+            // Yì¶•ê³¼ Zì¶• ë°©í–¥ìœ¼ë¡œ ì´ë™
             transform.position = initialPosition + new Vector3(0, y, z);
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        // 2ÃÊ ÈÄ ¾À ·Îµå
+        // 2ì´ˆ í›„ ì”¬ ë¡œë“œ
         SceneManager.LoadScene("hospital3");
     }
 }

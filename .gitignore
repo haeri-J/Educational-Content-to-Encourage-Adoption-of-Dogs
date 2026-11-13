@@ -70,3 +70,16 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Third-party Asset Store packages (not redistributable, import them yourself)
+/[Aa]ssets/Bitgem*
+/[Aa]ssets/Bublisher*
+/[Aa]ssets/Clipboard*
+/[Aa]ssets/Dish&Tray*
+/[Aa]ssets/First aid jar*
+/[Aa]ssets/HorrorHealingPack*
+/[Aa]ssets/Kabungus*
+/[Aa]ssets/Mini Toon Office*
+/[Aa]ssets/Morgue Room PBR*
+/[Aa]ssets/SimpleHands*
+/[Aa]ssets/Survival Tools*

@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.None; // ¸¶¿ì½º Æ÷ÀÎÅÍ¸¦ º¸ÀÌ°Ô
+        Cursor.lockState = CursorLockMode.None; // ë§ˆìš°ìŠ¤ í¬ì¸í„°ë¥¼ ë³´ì´ê²Œ
     }
 
     void Update()

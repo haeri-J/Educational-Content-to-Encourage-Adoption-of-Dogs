@@ -1,26 +1,26 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // UI ¿ä¼Ò¸¦ »ç¿ëÇÏ±â À§ÇØ ÇÊ¿ä
+using UnityEngine.UI; // UI ìš”ì†Œë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•´ í•„ìš”
 
 public class cshLast : MonoBehaviour
 {
-    // ÆĞ³Î°ú ÅØ½ºÆ®¸¦ ÂüÁ¶ÇÒ º¯¼ö
+    // íŒ¨ë„ê³¼ í…ìŠ¤íŠ¸ë¥¼ ì°¸ì¡°í•  ë³€ìˆ˜
     public GameObject panel;
     public GameObject text;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Start¿¡¼­ ÆĞ³Î°ú ÅØ½ºÆ®¸¦ ºñÈ°¼ºÈ­
+        // Startì—ì„œ íŒ¨ë„ê³¼ í…ìŠ¤íŠ¸ë¥¼ ë¹„í™œì„±í™”
         panel.SetActive(false);
         text.SetActive(false);
     }
 
-    // ¹öÆ° Å¬¸¯ ½Ã È£ÃâµÉ ¸Ş¼­µå
+    // ë²„íŠ¼ í´ë¦­ ì‹œ í˜¸ì¶œë  ë©”ì„œë“œ
     public void OnCompleteButtonClick()
     {
-        // ÆĞ³Î°ú ÅØ½ºÆ®¸¦ È°¼ºÈ­
+        // íŒ¨ë„ê³¼ í…ìŠ¤íŠ¸ë¥¼ í™œì„±í™”
         panel.SetActive(true);
         text.SetActive(true);
     }

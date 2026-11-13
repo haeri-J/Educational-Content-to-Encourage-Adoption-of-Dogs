@@ -1,38 +1,38 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class cshClipboard : MonoBehaviour
 {
-    public Transform playerChildObject; // ÇÃ·¹ÀÌ¾îÀÇ ÀÚ½Ä ¿ÀºêÁ§Æ®
-    private GameObject heldObject; // ÇÃ·¹ÀÌ¾î°¡ µé°í ÀÖ´Â ¿ÀºêÁ§Æ®
-    private Vector3 originalPosition; // ¿ÀºêÁ§Æ®ÀÇ ¿ø·¡ À§Ä¡¸¦ ÀúÀåÇÒ º¯¼ö
+    public Transform playerChildObject; // í”Œë ˆì´ì–´ì˜ ìì‹ ì˜¤ë¸Œì íŠ¸
+    private GameObject heldObject; // í”Œë ˆì´ì–´ê°€ ë“¤ê³  ìˆëŠ” ì˜¤ë¸Œì íŠ¸
+    private Vector3 originalPosition; // ì˜¤ë¸Œì íŠ¸ì˜ ì›ë˜ ìœ„ì¹˜ë¥¼ ì €ì¥í•  ë³€ìˆ˜
 
-    public Text subtitleText; // ÀÚ¸·À» Ç¥½ÃÇÒ Text ÄÄÆ÷³ÍÆ®
-    public string[] subtitles = { "ÈåÀ½..", "¾Æ¹«·¡µµ ¼ÒÇü°ßµéÀº ÀæÀº ±ÙÄ£ ±³¹è·Î À¯Àüº´À» ´Ş°í ÀÖÁö", "¾Öµµ ½½°³°ñÀÌ ¾È ÁÁÀº°¡ºÁ.." }; // Ç¥½ÃÇÒ ÀÚ¸·µé
-    public float delay = 5f; // ÀÚ¸· °£ÀÇ ½Ã°£ °£°İ
+    public Text subtitleText; // ìë§‰ì„ í‘œì‹œí•  Text ì»´í¬ë„ŒíŠ¸
+    public string[] subtitles = { "íìŒ..", "ì•„ë¬´ë˜ë„ ì†Œí˜•ê²¬ë“¤ì€ ì¦ì€ ê·¼ì¹œ êµë°°ë¡œ ìœ ì „ë³‘ì„ ë‹¬ê³  ìˆì§€", "ì• ë„ ìŠ¬ê°œê³¨ì´ ì•ˆ ì¢‹ì€ê°€ë´.." }; // í‘œì‹œí•  ìë§‰ë“¤
+    public float delay = 5f; // ìë§‰ ê°„ì˜ ì‹œê°„ ê°„ê²©
 
-    private bool isShowingSubtitles = false; // ÀÚ¸·ÀÌ Ç¥½ÃµÇ°í ÀÖ´ÂÁö ¿©ºÎ
+    private bool isShowingSubtitles = false; // ìë§‰ì´ í‘œì‹œë˜ê³  ìˆëŠ”ì§€ ì—¬ë¶€
 
     void Update()
     {
-        if (heldObject != null) // ¿ÀºêÁ§Æ®¸¦ µé°í ÀÖ´Ù¸é
+        if (heldObject != null) // ì˜¤ë¸Œì íŠ¸ë¥¼ ë“¤ê³  ìˆë‹¤ë©´
         {
-            heldObject.transform.position = playerChildObject.position; // ¿ÀºêÁ§Æ®ÀÇ À§Ä¡¸¦ ÇÃ·¹ÀÌ¾îÀÇ ÀÚ½Ä ¿ÀºêÁ§Æ® À§Ä¡·Î ¾÷µ¥ÀÌÆ®
+            heldObject.transform.position = playerChildObject.position; // ì˜¤ë¸Œì íŠ¸ì˜ ìœ„ì¹˜ë¥¼ í”Œë ˆì´ì–´ì˜ ìì‹ ì˜¤ë¸Œì íŠ¸ ìœ„ì¹˜ë¡œ ì—…ë°ì´íŠ¸
         }
 
-        if (Input.GetMouseButtonDown(0)) // ¸¶¿ì½º ¿ŞÂÊ ¹öÆ°À» ´­·¶À» ¶§
+        if (Input.GetMouseButtonDown(0)) // ë§ˆìš°ìŠ¤ ì™¼ìª½ ë²„íŠ¼ì„ ëˆŒë €ì„ ë•Œ
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.CompareTag("board")) // ÅÂ±×°¡ 'board'ÀÏ ¶§
+                if (hit.transform.CompareTag("board")) // íƒœê·¸ê°€ 'board'ì¼ ë•Œ
                 {
                     if (heldObject == null)
                     {
-                        heldObject = hit.transform.gameObject; // »õ·Î¿î ¿ÀºêÁ§Æ®¸¦ µé°Ô ÇÔ
-                        originalPosition = heldObject.transform.position; // ¿ÀºêÁ§Æ®ÀÇ ¿ø·¡ À§Ä¡¸¦ ÀúÀå
+                        heldObject = hit.transform.gameObject; // ìƒˆë¡œìš´ ì˜¤ë¸Œì íŠ¸ë¥¼ ë“¤ê²Œ í•¨
+                        originalPosition = heldObject.transform.position; // ì˜¤ë¸Œì íŠ¸ì˜ ì›ë˜ ìœ„ì¹˜ë¥¼ ì €ì¥
 
                         if (!isShowingSubtitles)
                         {
@@ -41,7 +41,7 @@ public class cshClipboard : MonoBehaviour
                     }
                     else
                     {
-                        heldObject.transform.position = originalPosition; // ¿ÀºêÁ§Æ®¸¦ ¿ø·¡ À§Ä¡·Î ÀÌµ¿
+                        heldObject.transform.position = originalPosition; // ì˜¤ë¸Œì íŠ¸ë¥¼ ì›ë˜ ìœ„ì¹˜ë¡œ ì´ë™
                         heldObject = null;
                     }
                 }
@@ -51,13 +51,13 @@ public class cshClipboard : MonoBehaviour
 
     IEnumerator ShowSubtitles()
     {
-        isShowingSubtitles = true; // ÀÚ¸·ÀÌ Ç¥½ÃµÇ°í ÀÖÀ½À» Ç¥½Ã
+        isShowingSubtitles = true; // ìë§‰ì´ í‘œì‹œë˜ê³  ìˆìŒì„ í‘œì‹œ
         foreach (string subtitle in subtitles)
         {
-            subtitleText.text = subtitle; // ÀÚ¸·À» º¯°æÇÕ´Ï´Ù.
-            yield return new WaitForSeconds(delay); // ÁöÁ¤µÈ ½Ã°£ µ¿¾È ´ë±âÇÕ´Ï´Ù.
+            subtitleText.text = subtitle; // ìë§‰ì„ ë³€ê²½í•©ë‹ˆë‹¤.
+            yield return new WaitForSeconds(delay); // ì§€ì •ëœ ì‹œê°„ ë™ì•ˆ ëŒ€ê¸°í•©ë‹ˆë‹¤.
         }
-        subtitleText.text = ""; // ÀÚ¸·À» Áö¿ó´Ï´Ù.
-        isShowingSubtitles = false; // ÀÚ¸· Ç¥½Ã°¡ ³¡³µÀ½À» Ç¥½Ã
+        subtitleText.text = ""; // ìë§‰ì„ ì§€ì›ë‹ˆë‹¤.
+        isShowingSubtitles = false; // ìë§‰ í‘œì‹œê°€ ëë‚¬ìŒì„ í‘œì‹œ
     }
 }

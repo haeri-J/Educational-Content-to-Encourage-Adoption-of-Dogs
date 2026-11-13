@@ -1,52 +1,52 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 
 public class cshFirstObjectInteraction : MonoBehaviour
 {
-    public Transform playerChildObject; // ÇÃ·¹ÀÌ¾îÀÇ ÀÚ½Ä ¿ÀºêÁ§Æ®
-    private GameObject heldObject; // ÇÃ·¹ÀÌ¾î°¡ µé°í ÀÖ´Â ¿ÀºêÁ§Æ®
-    public GameObject[] spawnPoints; // ½ºÆù Æ÷ÀÎÆ®¸¦ ÀúÀåÇÒ ¹è¿­
-    private Vector3 originalPosition; // ¿ÀºêÁ§Æ®ÀÇ ¿ø·¡ À§Ä¡¸¦ ÀúÀåÇÒ º¯¼ö
-    public cshfirstdogstate dogState; // °­¾ÆÁö »óÅÂ ½ºÅ©¸³Æ®
+    public Transform playerChildObject; // í”Œë ˆì´ì–´ì˜ ìì‹ ì˜¤ë¸Œì íŠ¸
+    private GameObject heldObject; // í”Œë ˆì´ì–´ê°€ ë“¤ê³  ìˆëŠ” ì˜¤ë¸Œì íŠ¸
+    public GameObject[] spawnPoints; // ìŠ¤í° í¬ì¸íŠ¸ë¥¼ ì €ì¥í•  ë°°ì—´
+    private Vector3 originalPosition; // ì˜¤ë¸Œì íŠ¸ì˜ ì›ë˜ ìœ„ì¹˜ë¥¼ ì €ì¥í•  ë³€ìˆ˜
+    public cshfirstdogstate dogState; // ê°•ì•„ì§€ ìƒíƒœ ìŠ¤í¬ë¦½íŠ¸
 
     void Update()
     {
-        if (heldObject != null) // ¿ÀºêÁ§Æ®¸¦ µé°í ÀÖ°í, ´øÁö´Â ÁßÀÌ ¾Æ´Ò ¶§
+        if (heldObject != null) // ì˜¤ë¸Œì íŠ¸ë¥¼ ë“¤ê³  ìˆê³ , ë˜ì§€ëŠ” ì¤‘ì´ ì•„ë‹ ë•Œ
         {
-            heldObject.transform.position = playerChildObject.position; // ¿ÀºêÁ§Æ®ÀÇ À§Ä¡¸¦ ÇÃ·¹ÀÌ¾îÀÇ ÀÚ½Ä ¿ÀºêÁ§Æ® À§Ä¡·Î ¾÷µ¥ÀÌÆ®
+            heldObject.transform.position = playerChildObject.position; // ì˜¤ë¸Œì íŠ¸ì˜ ìœ„ì¹˜ë¥¼ í”Œë ˆì´ì–´ì˜ ìì‹ ì˜¤ë¸Œì íŠ¸ ìœ„ì¹˜ë¡œ ì—…ë°ì´íŠ¸
         }
 
-        if (Input.GetMouseButtonDown(0)) // ¸¶¿ì½º ¿ŞÂÊ ¹öÆ°À» ´­·¶À» ¶§
+        if (Input.GetMouseButtonDown(0)) // ë§ˆìš°ìŠ¤ ì™¼ìª½ ë²„íŠ¼ì„ ëˆŒë €ì„ ë•Œ
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.CompareTag("towel") || hit.transform.CompareTag("syringe")) // ÅÂ±×°¡ 'towel'ÀÌ³ª 'syringe'ÀÎ °æ¿ì
+                if (hit.transform.CompareTag("towel") || hit.transform.CompareTag("syringe")) // íƒœê·¸ê°€ 'towel'ì´ë‚˜ 'syringe'ì¸ ê²½ìš°
                 {
-                    if (heldObject != null) // ÀÌ¹Ì ¿ÀºêÁ§Æ®¸¦ µé°í ÀÖ´Ù¸é
+                    if (heldObject != null) // ì´ë¯¸ ì˜¤ë¸Œì íŠ¸ë¥¼ ë“¤ê³  ìˆë‹¤ë©´
                     {
-                        heldObject.transform.position = originalPosition; // ¿ÀºêÁ§Æ®¸¦ ¿ø·¡ À§Ä¡·Î ÀÌµ¿
+                        heldObject.transform.position = originalPosition; // ì˜¤ë¸Œì íŠ¸ë¥¼ ì›ë˜ ìœ„ì¹˜ë¡œ ì´ë™
                     }
-                    heldObject = hit.transform.gameObject; // »õ·Î¿î ¿ÀºêÁ§Æ®¸¦ µé°Ô ÇÔ
-                    originalPosition = heldObject.transform.position; // ¿ÀºêÁ§Æ®ÀÇ ¿ø·¡ À§Ä¡¸¦ ÀúÀå
+                    heldObject = hit.transform.gameObject; // ìƒˆë¡œìš´ ì˜¤ë¸Œì íŠ¸ë¥¼ ë“¤ê²Œ í•¨
+                    originalPosition = heldObject.transform.position; // ì˜¤ë¸Œì íŠ¸ì˜ ì›ë˜ ìœ„ì¹˜ë¥¼ ì €ì¥
                 }
 
-                else if (hit.transform.CompareTag("dog")) // ÅÂ±×°¡ 'dog'ÀÎ °æ¿ì
+                else if (hit.transform.CompareTag("dog")) // íƒœê·¸ê°€ 'dog'ì¸ ê²½ìš°
                 {
-                    if (heldObject != null) // ¿ÀºêÁ§Æ®¸¦ µé°í ÀÖ´Ù¸é
+                    if (heldObject != null) // ì˜¤ë¸Œì íŠ¸ë¥¼ ë“¤ê³  ìˆë‹¤ë©´
                     {
                         if (heldObject.CompareTag("towel"))
                         {
-                            dogState.hasTowel = true; // Å¸¿ù »óÅÂ ¾÷µ¥ÀÌÆ®
+                            dogState.hasTowel = true; // íƒ€ì›” ìƒíƒœ ì—…ë°ì´íŠ¸
                         }
                         else if (heldObject.CompareTag("syringe"))
                         {
-                            dogState.hasSyringe = true; // ÁÖ»ç±â »óÅÂ ¾÷µ¥ÀÌÆ®
+                            dogState.hasSyringe = true; // ì£¼ì‚¬ê¸° ìƒíƒœ ì—…ë°ì´íŠ¸
                         }
 
                         heldObject.GetComponent<Rigidbody>().AddForce((hit.transform.position - heldObject.transform.position).normalized * 1f, ForceMode.Impulse);
-                        heldObject = null; // heldObject¸¦ null·Î ¼³Á¤
+                        heldObject = null; // heldObjectë¥¼ nullë¡œ ì„¤ì •
                     }
                 }
             }
